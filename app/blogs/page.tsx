@@ -12,7 +12,7 @@ const allBlogs = getBlogs()
                 {allBlogs.map(blog => (
                  <li key={blog.id}>
                     <Link href={`/blogs/${blog.id}`}> {blog.title} </Link>
-                     by {blog.author}
+                     by {blog.author} liked by <em><strong>{blog.likes}</strong> </em> people
                  </li>
                 ))}
             </div>

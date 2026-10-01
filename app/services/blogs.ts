@@ -27,6 +27,7 @@
  let nextId = 4;
 
  export const getBlogs = () => {
+    blogs.sort((a,b) => b.likes - a.likes)
     return blogs
  }
 
