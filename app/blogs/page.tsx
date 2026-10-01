@@ -1,16 +1,17 @@
+import Link from "next/link";
 import { getBlogs } from "../services/blogs";
 
 
-const Blogs = () => {
-const blogs = getBlogs()
+const Blogs = async () => {
+const allBlogs = getBlogs()
     return(
         <div>
-            <h2>Blog Listing</h2>
+            <h1 className="font-semibold">Blog Listing</h1>
 
             <div>
-                {blogs.map(blog => (
+                {allBlogs.map(blog => (
                  <li key={blog.id}>
-                    <a href={blog.url}> {blog.title} </a>
+                    <Link href={`/blogs/${blog.id}`}> {blog.title} </Link>
                      by {blog.author}
                  </li>
                 ))}
