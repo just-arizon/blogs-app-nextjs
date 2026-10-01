@@ -36,3 +36,12 @@
  export const getBlogById = (id: number) => {
     return blogs.find((blog) => blog.id === id)
  }
+
+ export const likeBlog = (id : number ) => {
+    const blogs = getBlogs();
+    const blog = blogs.find( b => b.id === id )
+
+    if(blog) {
+         blog.likes = (blog.likes ?? 0) + 1
+    }
+ }

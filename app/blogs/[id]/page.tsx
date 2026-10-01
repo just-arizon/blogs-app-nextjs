@@ -1,3 +1,5 @@
+
+import { toggleLike } from "@/app/actions/blog";
 import { getBlogById } from "@/app/services/blogs";
 import { notFound } from "next/navigation";
 
@@ -16,6 +18,11 @@ return (
        <em>by {blog.author}</em>
 
        <p><a href={ blog.url }>{blog.url}</a> <span>with {blog.likes} likes</span></p>
+
+       <form action= { toggleLike }>
+        <input type="hidden" name="id" value={blog.id} />
+        <button type="submit">Like</button>
+       </form>
     </div>
 )
 
