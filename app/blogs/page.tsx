@@ -8,7 +8,7 @@ const Blogs = async ({
   searchParams: Promise<{ q?: string }>
 }) => {
   const { q } = await searchParams
-  const allBlogs = getBlogs()
+  const allBlogs = await getBlogs()
   const blogs = q
     ? allBlogs.filter((blog) =>
         blog.title.toLowerCase().includes(q.toLowerCase())

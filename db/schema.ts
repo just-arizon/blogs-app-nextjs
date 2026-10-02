@@ -1,7 +1,7 @@
 
 import { pgTable, serial, text, integer } from "drizzle-orm/pg-core"
 
-export const notes = pgTable("blogs", {
+export const blogs = pgTable("blogs", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   author: text("author").notNull(),
