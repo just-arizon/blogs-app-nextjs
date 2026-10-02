@@ -31,7 +31,7 @@
     return blogs
  }
 
- export const addBlog = (title: string, author: string, url: string) => { blogs.push({id: nextId++, title, author, url})
+ export const addBlog = (title: string, author: string, url: string, likes: number) => { blogs.push({id: nextId++, title, author, url, likes})
  }
 
  export const getBlogById = (id: number) => {
