@@ -1,6 +1,6 @@
-import { eq, desc } from "drizzle-orm"
+import { eq, desc, sql } from "drizzle-orm"
 import { db } from "../../db"
-import { blogs } from "../../db/schema"
+import { blogs, users } from "../../db/schema"
 
 export const getBlogs = async () => {
   return db.query.blogs.findMany({
@@ -9,7 +9,15 @@ export const getBlogs = async () => {
 }
 
 export const addBlog = async (title: string, author: string, url: string) => {
-  await db.insert(blogs).values({ title, author, url, likes: 0 })
+  const user = await db.query.users.findFirst({
+    orderBy: sql `RANDOM()`,
+  })
+
+  if (!user) {
+    throw new Error("Cannot add a blog without an existing user")
+  }
+
+  await db.insert(blogs).values({ title, author, url, likes: 0, userId: user.id })
 }
 
 export const getBlogById = async (id: number) => {
