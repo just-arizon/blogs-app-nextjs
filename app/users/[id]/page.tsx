@@ -5,7 +5,10 @@ import { getUserWithBlogs } from "../../services/users"
 const UserPage = async ({ params }: { params: Promise<{ id: string }> }) => {
   const { id } = await params
   const user = await getUserWithBlogs(Number(id))
-
+  
+  if(!user) {
+    notFound()
+  }
   return (
     <div>
       <h2>{user.name}</h2>
